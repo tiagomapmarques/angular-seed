@@ -1,0 +1,13 @@
+
+<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+
+<md-input-container>
+  <input mdInput placeholder="Awesome Computer Scientist" [(ngModel)]="newScientistName">
+</md-input-container>
+<button md-raised-button (click)="handleSubmit($event)">Add</button>
+
+<ul>
+  <li *ngFor="let scientist of scientistsList">
+    <span class="{{getClassFromTitle(scientist.title)}}">{{scientist.title | title}}</span>&nbsp;<span>{{scientist.name}}</span>
+  </li>
+</ul>

@@ -1,0 +1,18 @@
+
+.col-content {
+  width: 100%;
+}
+
+.title {
+  &Blue {
+    color: royalblue;
+  }
+
+  &Pink {
+    color: pink;
+  }
+
+  &Bold {
+    font-weight: bold;
+  }
+}
