@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MdToolbarModule, MdTabsModule, MdIconModule } from '@angular/material';
 
+import { IconPipe } from '../../pipes';
 import { ToolbarComponent } from './toolbar';
 import { NavbarComponent } from './navbar';
 
@@ -15,6 +16,7 @@ import { NavbarComponent } from './navbar';
     MdIconModule,
   ],
   declarations: [
+    IconPipe,
     ToolbarComponent,
     NavbarComponent,
   ],

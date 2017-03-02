@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 import { Scientist, ScientistInterface } from '../../models';
 
@@ -16,7 +16,9 @@ export class ScientistsService {
   }
 
   public getAll(): Observable<Scientist[]> {
-    const request: Observable<Scientist[]> = this.http.get(this.SCIENTISTS_URL).map(response => <ScientistInterface[]> response.json().scientists);
+    const request: Observable<Scientist[]> = this.http.get(this.SCIENTISTS_URL)
+      .map(response => <ScientistInterface[]> response.json().scientists);
+
     return Observable.combineLatest(this.addedScientistsObservable, request, (addedScientists, requestScientistInterfaces) => {
       const requestScientists = requestScientistInterfaces.map(scientist => new Scientist(scientist));
       return [...requestScientists, ...addedScientists];

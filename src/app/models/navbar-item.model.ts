@@ -1,29 +1,22 @@
-export interface NavbarItemInterface {
-  title: string,
-  link: string,
-  icon: string,
-}
+import { BaseModel } from './base.model';
+import { IconType, IconTypes } from '../types';
 
-export class NavbarItem implements NavbarItemInterface {
+export interface NavbarItemInterface {
   title: string;
   link: string;
-  icon: string;
+  icon: IconType;
+}
 
-  constructor(json: NavbarItemInterface|string) {
-    this.title = '';
-    this.link = '';
-    this.icon = '';
+export class NavbarItem extends BaseModel<NavbarItemInterface> implements NavbarItemInterface {
+  title: string;
+  link: string;
+  icon: IconType;
 
-    if (typeof json === 'object') {
-      this.title = json.title;
-      this.link = json.link;
-      this.icon = json.icon;
-    }
-    else if (typeof json === 'string') {
-      const jsonParsed = <NavbarItemInterface> JSON.parse(json);
-      this.title = jsonParsed.title;
-      this.link = jsonParsed.link;
-      this.icon = jsonParsed.icon;
-    }
+  public iconToModel(icon: IconType|string): IconType {
+    return typeof icon === 'string' ? IconTypes.toModel(icon) : icon;
+  }
+
+  public iconToJson(icon: IconType): string {
+    return IconTypes.toJson(icon);
   }
 }

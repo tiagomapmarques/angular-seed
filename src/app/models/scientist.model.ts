@@ -1,9 +1,9 @@
 import { BaseModel } from './base.model';
-import { TitleType, TitleTypes } from './title.type';
+import { TitleType, TitleTypes } from '../types';
 
 export interface ScientistInterface {
-  name: string,
-  title: TitleType,
+  name: string;
+  title: TitleType;
 }
 
 export class Scientist extends BaseModel<ScientistInterface> implements ScientistInterface {

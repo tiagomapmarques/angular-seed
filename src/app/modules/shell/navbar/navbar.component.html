@@ -3,7 +3,7 @@
     <md-tab (click)="onClick($event)">
       <template md-tab-label>
         <div class="link" [routerLink]="item.link" routerLinkActive="active">
-          <md-icon>{{item.icon}}</md-icon>
+          <md-icon>{{item.icon | icon}}</md-icon>
           <span class="text">{{item.title}}</span>
         </div>
       </template>

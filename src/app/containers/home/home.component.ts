@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Rx';
 
-import { Scientist, TitleType } from '../../models';
+import { Scientist } from '../../models';
+import { TitleType } from '../../types';
 import { ScientistListState } from '../../states/scientist-list';
 
 @Component({
@@ -11,8 +12,8 @@ import { ScientistListState } from '../../states/scientist-list';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  private newScientistName = '';
   private scientistsList: Scientist[] = [];
+  public newScientistName = '';
 
   constructor(private scientistListState: ScientistListState) { }
 
@@ -23,17 +24,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.subscription && this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
-  private handleSubmit(event: Event): void {
-    this.newScientistName && this.scientistListState.add(new Scientist({ name: this.newScientistName, title: TitleType.MISTER }));
+  public handleSubmit(event: Event): void {
+    if (this.newScientistName) {
+      this.scientistListState.add(new Scientist({ name: this.newScientistName, title: TitleType.MISTER }));
+    }
     this.newScientistName = '';
   }
 
-  private getClassFromTitle(title: TitleType): string {
+  public getClassFromTitle(title: TitleType): string {
     let className = 'title';
-    switch(title) {
+    switch (title) {
       case TitleType.MISTER:
         className += 'Blue';
         break;

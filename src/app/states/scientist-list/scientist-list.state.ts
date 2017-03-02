@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Observable, Subscription } from 'rxjs';
+import { ReplaySubject, Observable, Subscription } from 'rxjs/Rx';
 
 import { Scientist } from '../../models';
 import { ScientistsService } from '../../services/scientists';
