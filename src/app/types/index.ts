@@ -1,7 +1,7 @@
-import { TitleType, TitleTypes } from './title.type';
-import { IconType, IconTypes } from './icon.type';
+import { TitleType, TITLE } from './title.type';
+import { IconType, ICON } from './icon.type';
 
 export {
-  TitleType, TitleTypes,
-  IconType, IconTypes,
+  TitleType, TITLE,
+  IconType, ICON,
 };

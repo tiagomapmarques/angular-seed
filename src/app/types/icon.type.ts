@@ -5,7 +5,7 @@ export enum IconType {
   INFO,
 };
 
-const ICONS = {
+const ICON_MAP = {
   'home': IconType.HOME,
   'info': [ IconType.INFO, IconType.ABOUT ],
 };
@@ -16,8 +16,8 @@ const typify = (icon: string): IconType => {
 
 const untypify = (icon: IconType): string => {
   let iconMatch = '';
-  Object.keys(ICONS).forEach((iconName: string) => {
-    const typesToCheck = ICONS[iconName];
+  Object.keys(ICON_MAP).forEach((iconName: string) => {
+    const typesToCheck = ICON_MAP[iconName];
     ((typesToCheck.forEach && typesToCheck) || [typesToCheck]).forEach((singleType) => {
       if (singleType === icon) {
         iconMatch = iconName;
@@ -27,7 +27,7 @@ const untypify = (icon: IconType): string => {
   return iconMatch;
 };
 
-export const IconTypes = {
+export const ICON = {
   toModel: (icon: string): IconType => typify(icon),
   toJson: (icon: IconType): string => untypify(icon),
 };

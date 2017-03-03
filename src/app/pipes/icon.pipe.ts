@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IconType, IconTypes } from '../types';
+import { IconType, ICON } from '../types';
 
 @Pipe({
   name: 'icon',
@@ -7,6 +7,6 @@ import { IconType, IconTypes } from '../types';
 export class IconPipe implements PipeTransform {
 
   transform(value: IconType): string {
-    return IconTypes.toJson(value);
+    return ICON.toJson(value);
   }
 }
