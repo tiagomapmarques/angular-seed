@@ -1,6 +1,8 @@
 
 export class BaseModel<T> {
+  /* tslint:disable:variable-name */
   private __BaseModel__original_json: T;
+  /* tslint:enable:variable-name */
 
   constructor(json: T) {
     this.__BaseModel__original_json = json;

@@ -3,6 +3,11 @@
     "node_modules/codelyzer"
   ],
   "rules": {
+    "array-type": [
+      true,
+      "array"
+    ],
+    "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
     "comment-format": [
@@ -12,7 +17,10 @@
     "curly": true,
     "eofline": true,
     "forin": true,
-    "import-blacklist": [true, "rxjs"],
+    "import-blacklist": [
+      true,
+      "rxjs"
+    ],
     "import-spacing": true,
     "indent": [
       true,
@@ -20,6 +28,10 @@
     ],
     "interface-over-type-literal": true,
     "label-position": true,
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
     "max-line-length": [
       true,
       140
@@ -30,25 +42,34 @@
       "static-before-instance",
       "variables-before-functions"
     ],
+    "no-any": true,
     "no-arg": true,
     "no-bitwise": true,
+    "no-consecutive-blank-lines": true,
     "no-console": [
       true,
       "debug",
+      "error",
       "info",
+      "log",
       "time",
       "timeEnd",
       "trace"
     ],
     "no-construct": true,
     "no-debugger": true,
+    "no-default-export": true,
     "no-duplicate-variable": true,
-    "no-empty": false,
+    "no-empty": true,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": [true, "ignore-params"],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
+    "no-magic-numbers": true,
     "no-shadowed-variable": true,
-    "no-string-literal": false,
+    "no-string-literal": true,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
@@ -72,6 +93,21 @@
     "semicolon": [
       "always"
     ],
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
     "triple-equals": [
       true,
       "allow-null-check"
@@ -88,7 +124,7 @@
     ],
     "typeof-compare": true,
     "unified-signatures": true,
-    "variable-name": false,
+    "variable-name": true,
     "whitespace": [
       true,
       "check-branch",
@@ -97,9 +133,18 @@
       "check-separator",
       "check-type"
     ],
-
-    "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", "app", "kebab-case"],
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
+    ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
