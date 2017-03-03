@@ -1,18 +1,20 @@
+@import '../../../themes/index';
 
-.col-content {
-  width: 100%;
-}
+@include app-home();
 
-.title {
-  &Blue {
-    color: royalblue;
-  }
+.scientist-list {
 
-  &Pink {
-    color: pink;
-  }
+  .title {
+    &Blue {
+      color: royalblue;
+    }
 
-  &Bold {
-    font-weight: bold;
+    &Pink {
+      color: pink;
+    }
+
+    &Bold {
+      font-weight: bold;
+    }
   }
 }
