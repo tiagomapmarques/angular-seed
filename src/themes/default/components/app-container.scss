@@ -1,0 +1,15 @@
+@import '~@angular/material/button/button';
+@import '~@angular/material/toolbar/toolbar';
+
+.app-container {
+  display: block;
+  padding: $mat-toolbar-padding;
+
+  ul {
+    padding-left: $mat-toolbar-padding * 2;
+  }
+
+  button {
+    @extend .mat-raised-button;
+  }
+}

@@ -1,0 +1,44 @@
+@import './app-container';
+
+@mixin app-home {
+
+  :host {
+    @extend .app-container;
+  }
+
+  button {
+    &.correct {
+      @extend .mat-primary;
+    }
+    &.warning {
+      @extend .mat-accent;
+    }
+  }
+
+  ul.scientist-list {
+    padding-left: $mat-toolbar-padding;
+
+    li {
+      list-style: none;
+      &:before {
+        @include icon-content('\E8A6');
+        vertical-align: bottom;
+        margin-right: 4px;
+      }
+
+      &:after {
+        content: ';';
+        margin-left: -3px;
+      }
+    }
+  }
+
+  md-input-container {
+    margin-right: 20px;
+
+    input {
+      width: 200px;
+    }
+  }
+
+}
