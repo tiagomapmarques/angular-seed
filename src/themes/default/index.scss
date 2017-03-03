@@ -1,0 +1,23 @@
+@import '~@angular/material/core/theming/all-theme';
+
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-blue);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+$warn:    mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+
+// Import component-specific style
+@import 'globals';
+@import 'components/app-about';
+@import 'components/app-home';
+@import 'components/app-shell-navbar';
+@import 'components/app-shell-toolbar';

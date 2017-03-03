@@ -1,12 +1,15 @@
 
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+<p>Howdy! Here's a list of awesome computer scientists.</p>
+<p>Do you know any others? Add to the list yourself.</p>
 
 <md-input-container>
-  <input mdInput placeholder="Awesome Computer Scientist" [(ngModel)]="newScientistName">
+  <input mdInput placeholder="Awesome Computer Scientist" [(ngModel)]="newScientistName" (keyup)="handleKeyUp($event)">
 </md-input-container>
-<button md-raised-button (click)="handleSubmit($event)">Add</button>
+<button (click)="handleSubmit($event)" [class]="this.isButtonValid() ? 'correct' : 'warning'">Add</button>
 
-<ul>
+<h3>Scientists list:</h3>
+
+<ul class="scientist-list">
   <li *ngFor="let scientist of scientistsList">
     <span class="{{getClassFromTitle(scientist.title)}}">{{scientist.title | title}}</span>&nbsp;<span>{{scientist.name}}</span>
   </li>

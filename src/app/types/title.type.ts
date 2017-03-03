@@ -5,7 +5,7 @@ export enum TitleType {
   DOCTOR,
 };
 
-export const TitleTypes = {
+export const TITLE = {
   toModel: (title: string): TitleType => TitleType[title.toUpperCase()],
   toJson: (title: TitleType): string => TitleType[title],
 };

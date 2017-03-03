@@ -1,0 +1,10 @@
+@import '~@angular/material/core/theming/all-theme';
+
+@mixin globals() {
+
+  body {
+    font-family: $mat-font-family;
+    font-size: $mat-body-font-size-base;
+    line-height: $mat-body-font-size-base * 1.75;
+  }
+}

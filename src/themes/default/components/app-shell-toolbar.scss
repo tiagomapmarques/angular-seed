@@ -1,0 +1,8 @@
+@import '~@angular/material/toolbar/toolbar-theme';
+
+@mixin app-shell-toolbar {
+
+  .shell-toolbar {
+    @extend .mat-primary;
+  }
+}

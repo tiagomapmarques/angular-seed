@@ -1,5 +1,5 @@
 import { BaseModel } from './base.model';
-import { TitleType, TitleTypes } from '../types';
+import { TitleType, TITLE } from '../types';
 
 export interface ScientistInterface {
   name: string;
@@ -11,10 +11,10 @@ export class Scientist extends BaseModel<ScientistInterface> implements Scientis
   title: TitleType;
 
   public titleToModel(title: TitleType|string): TitleType {
-    return typeof title === 'string' ? TitleTypes.toModel(title) : title;
+    return typeof title === 'string' ? TITLE.toModel(title) : title;
   }
 
   public titleToJson(title: TitleType): string {
-    return TitleTypes.toJson(title);
+    return TITLE.toJson(title);
   }
 }

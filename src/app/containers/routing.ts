@@ -4,7 +4,7 @@ import { AboutRouting } from './about';
 
 const ROUTES = [
   // Default route
-  RouterModule.forRoot([{ path: '**', redirectTo: '', }]),
+  RouterModule.forRoot([{ path: '**', redirectTo: '' }]),
 
   // Container routes
   HomeRouting,

@@ -1,0 +1,14 @@
+@import '~@angular/material/toolbar/toolbar-theme';
+
+@mixin app-shell-navbar {
+
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .text {
+      margin-left: $mat-body-font-size-base / 4;
+    }
+  }
+}

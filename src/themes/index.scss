@@ -1,0 +1,16 @@
+
+//TODO: review when this https://github.com/sass/sass/pull/2057 is merged
+//
+// @mixin apply-class-props($elementTag, $className, $args...) {
+//   $mixinName: '#{$elementTag}-#{$className}';
+//   @if(mixin-exists($mixinName)) {
+//     @include #{$mixinName}($args);
+//   }
+// }
+
+@mixin icon-content($unicode) {
+  font-family: 'Material Icons';
+  content: $unicode;
+}
+
+@import 'default/index';

@@ -11,9 +11,11 @@ import { ScientistListState } from '../../states/scientist-list';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
   private subscription: Subscription;
   private scientistsList: Scientist[] = [];
-  public newScientistName = '';
+
+  public newScientistName = null;
 
   constructor(private scientistListState: ScientistListState) { }
 
@@ -29,11 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public handleSubmit(event: Event): void {
-    if (this.newScientistName) {
-      this.scientistListState.add(new Scientist({ name: this.newScientistName, title: TitleType.MISTER }));
-    }
-    this.newScientistName = '';
+  public isButtonValid() {
+    return this.newScientistName !== '';
   }
 
   public getClassFromTitle(title: TitleType): string {
@@ -50,5 +49,20 @@ export class HomeComponent implements OnInit, OnDestroy {
         break;
     }
     return className;
+  }
+
+  public handleKeyUp(event: KeyboardEvent): void {
+    if (event.key.toLowerCase() === 'enter') {
+      this.handleSubmit(event);
+    }
+  }
+
+  public handleSubmit(event: Event): void {
+    if (this.newScientistName) {
+      this.scientistListState.add(new Scientist({ name: this.newScientistName, title: TitleType.MISTER }));
+      this.newScientistName = null;
+    } else {
+      this.newScientistName = '';
+    }
   }
 }

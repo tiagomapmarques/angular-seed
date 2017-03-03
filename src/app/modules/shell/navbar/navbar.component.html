@@ -1,8 +1,8 @@
-<md-tab-group>
+<md-tab-group [selectedIndex]="selectedTab">
   <template ngFor let-item [ngForOf]="menuItems" let-i="index" [ngForTrackBy]="trackByFn">
-    <md-tab (click)="onClick($event)">
+    <md-tab>
       <template md-tab-label>
-        <div class="link" [routerLink]="item.link" routerLinkActive="active">
+        <div class="link" [routerLink]="item.link">
           <md-icon>{{item.icon | icon}}</md-icon>
           <span class="text">{{item.title}}</span>
         </div>
