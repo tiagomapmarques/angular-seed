@@ -20,6 +20,7 @@
 
     li {
       list-style: none;
+
       &:before {
         @include icon-content('\E8A6');
         vertical-align: bottom;
@@ -29,6 +30,22 @@
       &:after {
         content: ';';
         margin-left: -3px;
+      }
+
+      &:hover {
+        span {
+          text-decoration: line-through;
+        }
+
+        &:before {
+          color: red;
+          @include icon-content('\E5CD');
+          text-decoration: none;
+        }
+
+        &:active:before {
+          @include icon-content('\E5C9');
+        }
       }
     }
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
 
-import { Scientist } from '../../models';
-import { TitleType } from '../../types';
+import { Scientist, ScientistInterface } from '../../models';
+import { TitleType, TITLE } from '../../types';
 import { ScientistListState } from '../../states/scientist-list';
 
 @Component({
@@ -15,7 +15,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private scientistsList: Scientist[] = [];
 
-  public newScientistName = null;
+  public newScientist: ScientistInterface = {
+    name: null,
+    title: null,
+  };
+  public titles: TitleType[];
 
   constructor(private scientistListState: ScientistListState) { }
 
@@ -23,6 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription = this.scientistListState.get().subscribe((scientists) => {
       this.scientistsList = scientists;
     });
+    this.titles = TITLE.enumValues();
   }
 
   public ngOnDestroy(): void {
@@ -32,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public isButtonValid() {
-    return this.newScientistName !== '';
+    return this.newScientist.name !== '' && this.newScientist.title !== 0;
   }
 
   public getClassFromTitle(title: TitleType): string {
@@ -51,18 +56,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     return className;
   }
 
-  public handleKeyUp(event: KeyboardEvent): void {
+  public handleTextKeyUp(event: KeyboardEvent): void {
     if (event.key.toLowerCase() === 'enter') {
       this.handleSubmit(event);
     }
   }
 
   public handleSubmit(event: Event): void {
-    if (this.newScientistName) {
-      this.scientistListState.add(new Scientist({ name: this.newScientistName, title: TitleType.MISTER }));
-      this.newScientistName = null;
+    if (this.newScientist.name && this.newScientist.title) {
+      this.scientistListState.add(new Scientist(this.newScientist));
+      this.newScientist.name = null;
+      this.newScientist.title = null;
     } else {
-      this.newScientistName = '';
+      if (!this.newScientist.name) {
+        this.newScientist.name = '';
+      }
+      if (!this.newScientist.title) {
+        this.newScientist.title = 0;
+      }
     }
+  }
+
+  public handleListClick(id: number): void {
+    this.scientistListState.remove(id);
   }
 }

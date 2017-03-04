@@ -3,14 +3,21 @@
 <p>Do you know any others? Add to the list yourself.</p>
 
 <md-input-container>
-  <input mdInput placeholder="Awesome Computer Scientist" [(ngModel)]="newScientistName" (keyup)="handleKeyUp($event)">
+  <input mdInput placeholder="Awesome Computer Scientist" [(ngModel)]="newScientist.name" (keyup)="handleTextKeyUp($event)">
 </md-input-container>
+
+<md-radio-group [(ngModel)]="newScientist.title">
+  <template ngFor let-title [ngForOf]="titles" let-i="index" [ngForTrackBy]="trackByFn">
+    <md-radio-button [value]="title">{{title | title}}</md-radio-button>
+  </template>
+</md-radio-group>
+
 <button (click)="handleSubmit($event)" [class]="this.isButtonValid() ? 'correct' : 'warning'">Add</button>
 
 <h3>Scientists list:</h3>
 
 <ul class="scientist-list">
-  <li *ngFor="let scientist of scientistsList">
+  <li *ngFor="let scientist of scientistsList" (click)="handleListClick(scientist.id)">
     <span class="{{getClassFromTitle(scientist.title)}}">{{scientist.title | title}}</span>&nbsp;<span>{{scientist.name}}</span>
   </li>
 </ul>
