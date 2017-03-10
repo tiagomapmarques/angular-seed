@@ -28,6 +28,7 @@ const untypify = (icon: IconType): string => {
 };
 
 export const ICON = {
+  enumValues: (): IconType[] => [ IconType.HOME, IconType.ABOUT, IconType.INFO ],
   toModel: (icon: string): IconType => typify(icon),
   toJson: (icon: IconType): string => untypify(icon),
 };

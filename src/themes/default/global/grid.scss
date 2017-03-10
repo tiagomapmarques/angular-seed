@@ -1,0 +1,30 @@
+@import '~@angular/material/core/style/variables';
+
+$grid-columns: 12;
+@mixin grid-col($cols, $max-cols: $grid-columns) {
+  width: $cols*100%/$max-cols;
+}
+
+@for $i from 1 through $grid-columns {
+  %grid-col-#{$i} {
+    @include grid-col($i, $grid-columns);
+  }
+}
+
+@mixin grid-format($desktop, $tablet, $mobile) {
+  @if(type-of($desktop) == number) {
+    @extend %grid-col-#{$desktop};
+  }
+
+  @if(type-of($tablet) == number) {
+    @media ($mat-small) {
+      @include grid-col($tablet);
+    }
+  }
+
+  @if(type-of($mobile) == number) {
+    @media ($mat-xsmall) {
+      @include grid-col($mobile);
+    }
+  }
+}

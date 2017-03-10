@@ -1,18 +1,8 @@
 @import './app-container';
 
 @mixin app-home {
-
   :host {
     @extend .app-container;
-  }
-
-  button {
-    &.correct {
-      @extend .mat-primary;
-    }
-    &.warning {
-      @extend .mat-accent;
-    }
   }
 
   ul.scientist-list {
@@ -20,6 +10,11 @@
 
     li {
       list-style: none;
+
+      div {
+        display: inline;
+      }
+
       &:before {
         @include icon-content('\E8A6');
         vertical-align: bottom;
@@ -30,15 +25,22 @@
         content: ';';
         margin-left: -3px;
       }
+
+      &:hover {
+        div {
+          text-decoration: line-through;
+        }
+
+        &:before {
+          color: red;
+          @include icon-content('\E5CD');
+          text-decoration: none;
+        }
+
+        &:active:before {
+          @include icon-content('\E5C9');
+        }
+      }
     }
   }
-
-  md-input-container {
-    margin-right: 20px;
-
-    input {
-      width: 200px;
-    }
-  }
-
 }

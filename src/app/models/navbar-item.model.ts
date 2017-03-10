@@ -8,9 +8,9 @@ export interface NavbarItemInterface {
 }
 
 export class NavbarItem extends BaseModel<NavbarItemInterface> implements NavbarItemInterface {
-  title: string;
-  link: string;
-  icon: IconType;
+  public title: string;
+  public link: string;
+  public icon: IconType;
 
   public iconToModel(icon: IconType|string): IconType {
     return typeof icon === 'string' ? ICON.toModel(icon) : icon;

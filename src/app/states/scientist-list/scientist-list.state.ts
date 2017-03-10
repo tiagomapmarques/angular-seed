@@ -6,7 +6,7 @@ import { ScientistsService } from '../../services/scientists';
 
 @Injectable()
 export class ScientistListState {
-  public static PROVIDERS = [ScientistsService];
+  public static PROVIDERS = [ ScientistsService ];
 
   private subscription: Subscription;
   private store: ReplaySubject<Scientist[]>;
@@ -26,5 +26,9 @@ export class ScientistListState {
 
   public add(scientist: Scientist): void {
     this.scientistsService.add(scientist);
+  }
+
+  public remove(id: number): void {
+    this.scientistsService.remove(id);
   }
 }

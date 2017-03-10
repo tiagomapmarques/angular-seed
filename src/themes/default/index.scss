@@ -16,7 +16,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 
 // Import component-specific style
-@import 'globals';
+@import 'global/index';
 @import 'components/app-about';
 @import 'components/app-home';
 @import 'components/app-shell-navbar';
