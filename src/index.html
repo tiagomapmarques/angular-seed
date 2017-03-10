@@ -7,10 +7,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+  <!-- Loading Style -->
+  <style>
+    #app-root-loading {
+      position: absolute;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+    }
+    #app-root-loading span {
+      text-align: center;
+      color: transparent;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 100%;
+    }
+
+    #app-root-loading {
+      width: 100px;
+      height: 100px;
+    }
+    #app-root-loading:before,
+    #app-root-loading:after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #2196f3;
+      border-radius: 100px;
+      animation-name: app-root-loading-circle;
+      animation-duration: 2s;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      opacity: 0.7;
+    }
+    #app-root-loading:after {
+      animation-delay: -1s;
+    }
+
+    @keyframes app-root-loading-circle {
+      0% {
+        width: 100px; height: 100px;
+        left: 0px; top: 0px;
+        z-index: 0;
+      }
+      50% {
+        width: 0px; height: 0px;
+        left: 50px; top: 50px;
+        z-index: inherit;
+      }
+      100% {
+        width: 100px; height: 100px;
+        left: 0px; top: 0px;
+        z-index: 1;
+      }
+    }
+  </style>
+
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div id="app-root-loading">
+      <span>Loading...</span>
+    </div>
+  </app-root>
 </body>
 </html>
