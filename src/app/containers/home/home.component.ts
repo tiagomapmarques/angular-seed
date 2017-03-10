@@ -15,11 +15,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private scientistsList: Scientist[] = [];
 
-  public newScientist: ScientistInterface = {
-    name: null,
-    title: null,
-  };
   public titles: TitleType[];
+  public newScientist: ScientistInterface;
+  public namePlaceholder = 'Awesome Computer Scientist';
 
   constructor(private scientistListState: ScientistListState) { }
 
@@ -28,6 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.scientistsList = scientists;
     });
     this.titles = TITLE.enumValues();
+    this.newScientist = { name: null, title: null };
+    this.formSetPristine();
   }
 
   public ngOnDestroy(): void {
@@ -36,8 +36,34 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public isButtonValid() {
-    return this.newScientist.name !== '' && this.newScientist.title !== 0;
+  public formIsValid(): boolean {
+    return !!this.newScientist.name && !!this.newScientist.title;
+  }
+
+  public formIsDirty(allInputs: boolean = false): boolean {
+    let isDirty: boolean = allInputs;
+    Object.keys(this.newScientist).forEach(key => {
+      const value = this.newScientist[key];
+      isDirty = allInputs ? isDirty && value !== null : isDirty || value !== null;
+    });
+    return isDirty;
+  }
+
+  public formSetPristine(): void {
+    Object.keys(this.newScientist).forEach(key => this.newScientist[key] = null);
+  }
+
+  public formSetDirty(): void {
+    if (!this.newScientist.name) {
+      this.newScientist.name = '';
+    }
+    if (!this.newScientist.title) {
+      this.newScientist.title = 0;
+    }
+  }
+
+  public getButtonClass(): string {
+    return this.formIsValid() || !this.formIsDirty(true) ? 'primary' : 'warning';
   }
 
   public getClassFromTitle(title: TitleType): string {
@@ -58,26 +84,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public handleTextKeyUp(event: KeyboardEvent): void {
     if (event.key.toLowerCase() === 'enter') {
-      this.handleSubmit(event);
+      this.handleSubmit();
     }
   }
 
-  public handleSubmit(event: Event): void {
-    if (this.newScientist.name && this.newScientist.title) {
+  public handleSubmit(): void {
+    if (this.formIsValid()) {
       this.scientistListState.add(new Scientist(this.newScientist));
-      this.newScientist.name = null;
-      this.newScientist.title = null;
+      this.formSetPristine();
     } else {
-      if (!this.newScientist.name) {
-        this.newScientist.name = '';
-      }
-      if (!this.newScientist.title) {
-        this.newScientist.title = 0;
-      }
+      this.formSetDirty();
     }
   }
 
-  public handleListClick(id: number): void {
+  public handleListItemClick(id: number): void {
     this.scientistListState.remove(id);
   }
 }
