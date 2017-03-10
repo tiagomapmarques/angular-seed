@@ -1,5 +1,5 @@
 import { BaseModel } from './base.model';
-import { TitleType, TITLE } from '../types';
+import { TitleType, TITLE, NumberType } from '../types';
 
 export interface ScientistInterface {
   id?: number;
@@ -13,7 +13,7 @@ export class Scientist extends BaseModel<ScientistInterface> implements Scientis
   public title: TitleType;
 
   public idToModel(id: number|string): number {
-    return typeof id === 'string' ? parseInt(id) : id;
+    return typeof id === 'string' ? parseInt(id, NumberType.DEC) : id;
   }
 
   public idToJson(id: number): string {

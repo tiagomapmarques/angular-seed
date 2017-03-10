@@ -8,7 +8,7 @@ const SCIENTISTS_URL = '/assets/scientists.json';
 
 @Injectable()
 export class ScientistsService {
-  private nextId: number = 0;
+  private nextId = 0;
   private scientists: Scientist[];
   private scientistsObservable: BehaviorSubject<Scientist[]>;
 
@@ -31,6 +31,8 @@ export class ScientistsService {
   }
 
   public add(scientist: Scientist): void {
+    // NOTE: this is a mock function; a real one would use a server to add
+    //       the object and then update the list
     if (!scientist.id) {
       scientist.id = this.nextId++;
     }
@@ -39,6 +41,8 @@ export class ScientistsService {
   }
 
   public remove(id: number): void {
+    // NOTE: this is a mock function; a real one would use a server to remove
+    //       the object and then update the list
     this.scientists = this.scientists.filter(scientist => scientist.id !== id);
     this.scientistsObservable.next(this.scientists);
   }
