@@ -8,9 +8,4 @@
 //   }
 // }
 
-@mixin icon-content($unicode) {
-  font-family: 'Material Icons';
-  content: $unicode;
-}
-
 @import 'default/index';

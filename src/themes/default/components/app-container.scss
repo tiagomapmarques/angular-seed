@@ -2,8 +2,14 @@
 @import '~@angular/material/toolbar/toolbar';
 
 .app-container {
+  @include grid-format(6, 10, 12);
+
   display: block;
   padding: $mat-toolbar-padding;
+
+  h3 {
+    margin-top: 40px;
+  }
 
   ul {
     padding-left: $mat-toolbar-padding * 2;
@@ -11,5 +17,39 @@
 
   button {
     @extend .mat-raised-button;
+    @include grid-format(false, false, 12);
+
+    &.primary {
+      @extend .mat-primary;
+    }
+    &.warning {
+      @extend .mat-accent;
+    }
   }
+
+  .mat-input-container {
+    @include grid-format(6, 10, 12);
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  .mat-radio-group {
+    @include grid-format(8, 10, 12);
+    display: flex;
+    @media ($mat-xsmall) {
+      display: inherit;
+    }
+    margin-top: 14px;
+    margin-bottom: 14px;
+
+    .mat-radio-button {
+      @include grid-format(4, 4, 12);
+    }
+  }
+
+  //TODO: force alignment of radio labels to center of radio button
+  // .mat-radio-label {
+  //   align-items: flex-start;
+  // }
 }

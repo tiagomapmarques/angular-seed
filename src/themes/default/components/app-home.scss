@@ -1,18 +1,8 @@
 @import './app-container';
 
 @mixin app-home {
-
   :host {
     @extend .app-container;
-  }
-
-  button {
-    &.correct {
-      @extend .mat-primary;
-    }
-    &.warning {
-      @extend .mat-accent;
-    }
   }
 
   ul.scientist-list {
@@ -20,6 +10,10 @@
 
     li {
       list-style: none;
+
+      div {
+        display: inline;
+      }
 
       &:before {
         @include icon-content('\E8A6');
@@ -33,7 +27,7 @@
       }
 
       &:hover {
-        span {
+        div {
           text-decoration: line-through;
         }
 
@@ -49,13 +43,4 @@
       }
     }
   }
-
-  md-input-container {
-    margin-right: 20px;
-
-    input {
-      width: 200px;
-    }
-  }
-
 }
