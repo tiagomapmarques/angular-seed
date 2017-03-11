@@ -7,6 +7,6 @@ import { IconType, ICON } from '../types';
 export class IconPipe implements PipeTransform {
 
   transform(value: IconType): string {
-    return ICON.toJson(value);
+    return ICON.map(value);
   }
 }

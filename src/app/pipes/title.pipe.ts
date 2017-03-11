@@ -7,7 +7,7 @@ import { TitleType, TITLE } from '../types';
 export class TitlePipe implements PipeTransform {
 
   transform(value: TitleType): string {
-    const title = TITLE.toJson(value).toLowerCase();
+    const title = TITLE.map(value);
     return title && (title.charAt(0).toUpperCase() + title.slice(1));
   }
 }
