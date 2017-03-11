@@ -1,4 +1,4 @@
-import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from './base.type.spec';
+import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { NumberType, NUMBER } from './number.type';
 
 const NUMBERTYPE_DEFINITION: BaseTypeTestDefinition = {

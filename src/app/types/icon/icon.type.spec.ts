@@ -1,4 +1,4 @@
-import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from './base.type.spec';
+import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { IconType, ICON_MAP, ICON } from './icon.type';
 
 const ICONTYPE_DEFINITION: BaseTypeTestDefinition = {

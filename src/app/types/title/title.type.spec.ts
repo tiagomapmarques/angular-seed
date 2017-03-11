@@ -1,4 +1,4 @@
-import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from './base.type.spec';
+import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { TitleType, TITLE } from './title.type';
 
 const TITLETYPE_DEFINITION: BaseTypeTestDefinition = {

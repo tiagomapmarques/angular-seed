@@ -1,7 +1,7 @@
 import { BaseTypeFunctions } from './base.type';
-import { TitleType, TITLE } from './title.type';
-import { IconType, ICON } from './icon.type';
-import { NumberType, NUMBER } from './number.type';
+import { TitleType, TITLE } from './title';
+import { IconType, ICON } from './icon';
+import { NumberType, NUMBER } from './number';
 
 export {
   BaseTypeFunctions,
