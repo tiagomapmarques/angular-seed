@@ -1,6 +1,8 @@
 import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { NumberType, NUMBER } from './number.type';
 
+const NON_EXISTING_VALUE = 42;
+
 const NUMBERTYPE_DEFINITION: BaseTypeTestDefinition = {
   name: 'NumberType',
   entity: NumberType,
@@ -10,7 +12,7 @@ const NUMBERTYPE_DEFINITION: BaseTypeTestDefinition = {
     'DEC': 'dec',
     'HEX': 'hex',
   },
-  nonExistingValue: <NumberType>42,
+  nonExistingValue: <NumberType>NON_EXISTING_VALUE,
 };
 
 describe('Number Functions', () => {

@@ -1,6 +1,8 @@
 import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { TitleType, TITLE } from './title.type';
 
+const NON_EXISTING_VALUE = 42;
+
 const TITLETYPE_DEFINITION: BaseTypeTestDefinition = {
   name: 'TitleType',
   entity: TitleType,
@@ -11,7 +13,7 @@ const TITLETYPE_DEFINITION: BaseTypeTestDefinition = {
     'MISS': 'miss',
     'DOCTOR': 'doctor',
   },
-  nonExistingValue: <TitleType>42,
+  nonExistingValue: <TitleType>NON_EXISTING_VALUE,
 };
 
 describe('Title Functions', () => {

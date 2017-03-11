@@ -1,6 +1,8 @@
 import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
 import { IconType, ICON_MAP, ICON } from './icon.type';
 
+const NON_EXISTING_VALUE = 42;
+
 const ICONTYPE_DEFINITION: BaseTypeTestDefinition = {
   name: 'IconType',
   entity: IconType,
@@ -11,7 +13,7 @@ const ICONTYPE_DEFINITION: BaseTypeTestDefinition = {
     'ABOUT': 'info',
     'INFO': 'info',
   },
-  nonExistingValue: <IconType>42,
+  nonExistingValue: <IconType>NON_EXISTING_VALUE,
 };
 
 describe('Icon Functions', () => {

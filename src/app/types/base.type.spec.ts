@@ -1,18 +1,23 @@
 import { BaseTypeFunctions } from './base.type';
 
+/* tslint:disable:no-any */
+type Enum = any;
+/* tslint:enable:no-any */
+type EnumValue = number;
+
 export interface BaseTypeTestDefinition {
-  name: string,
-  entity: any,
-  list: any[],
-  functions: BaseTypeFunctions,
-  reversedMap: Object,
-  nonExistingValue: any,
+  name: string;
+  entity: Enum;
+  list: EnumValue[];
+  functions: BaseTypeFunctions;
+  reversedMap: Object;
+  nonExistingValue: EnumValue;
 }
 
 export const baseTypeFunctionTests = (definition: BaseTypeTestDefinition) => {
 
   describe('#enumValues', () => {
-    let enumValues: any[];
+    let enumValues: EnumValue[];
 
     beforeEach(() => {
       enumValues = definition.functions.enumValues();
