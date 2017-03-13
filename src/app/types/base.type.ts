@@ -20,12 +20,13 @@ export const toType = (enumString: string, entity: Enum): EnumValue => {
 };
 
 export const toString = (enumValue: EnumValue, entity: Enum): string => {
-  return enumValue ? entity[enumValue] : null;
+  const enumString = enumValue ? entity[enumValue] : null;
+  return typeof enumString === 'string' ? enumString.toLowerCase() : enumString;
 };
 
 export const toMapped = (enumValue: EnumValue, entity: Enum, map: BaseTypeMap = null, defaultValue: string = ''): string => {
   if (!map) {
-    return (toString(enumValue, entity) || defaultValue).toLowerCase();
+    return (toString(enumValue, entity) || defaultValue);
   }
   let match = defaultValue;
   Object.keys(map).forEach((itemName: string) => {

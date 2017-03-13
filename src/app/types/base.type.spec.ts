@@ -76,9 +76,9 @@ export const baseTypeFunctionTests = (definition: BaseTypeTestDefinition) => {
 
     describe(`given a correct ${definition.name}`, () => {
 
-      it(`converts an ${definition.name} to a string`, () => {
+      it('converts it to a string', () => {
         definition.list.forEach(item => {
-          const itemString = definition.entity[item];
+          const itemString = definition.entity[item].toLowerCase();
           expect(definition.functions.toJson(item)).toEqual(itemString);
         });
       });
