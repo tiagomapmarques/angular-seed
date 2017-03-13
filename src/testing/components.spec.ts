@@ -1,4 +1,4 @@
-import { TestBed, async, TestModuleMetadata, ComponentFixture } from '@angular/core/testing';
+import { TestBed, TestModuleMetadata, ComponentFixture } from '@angular/core/testing';
 
 export interface TestComponent<T> {
   fixture: ComponentFixture<T>;

@@ -128,7 +128,7 @@ export const baseTypeTests = (definition: BaseTypeTestDefinition) => {
 
   describe('roundtrip', () => {
 
-    it('is posible for all enum values', () => {
+    it('is possible for all enum values', () => {
       definition.list.forEach(item => {
         const json = definition.functions.toJson(item);
         const newModel = definition.functions.toModel(json);

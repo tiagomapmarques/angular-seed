@@ -13,6 +13,10 @@
 
   ul {
     padding-left: $mat-toolbar-padding * 2;
+
+    li {
+      display: table;
+    }
   }
 
   button {

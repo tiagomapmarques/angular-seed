@@ -1,5 +1,5 @@
 import { BaseTypeTestDefinition, baseTypeFunctionTests, baseTypeTests } from '../base.type.spec';
-import { IconType, ICON_MAP, ICON } from './icon.type';
+import { IconType, ICON } from './icon.type';
 
 const NON_EXISTING_VALUE = 42;
 
