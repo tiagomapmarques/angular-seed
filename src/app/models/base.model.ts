@@ -1,4 +1,12 @@
 
+export interface Json {
+  [key: string]: number|string|Json|Json[];
+}
+
+export interface JsonObject extends Json {
+  id: number;
+}
+
 export class BaseModel<T> {
   /* tslint:disable:variable-name */
   private __BaseModel__original_json: T;
@@ -30,5 +38,6 @@ export class BaseModel<T> {
         Object.assign(json, this[propertyToJson] ? this[propertyToJson](value) : { [property]: value });
       });
     }
+    return json;
   }
 }

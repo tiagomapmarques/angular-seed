@@ -1,7 +1,7 @@
-import { NavbarItem, NavbarItemInterface } from './navbar-item.model';
-import { Scientist, ScientistInterface, ScientistResponse } from './scientist.model';
+import { NavbarItemJsonObject, NavbarItemInterface, NavbarItem } from './navbar-item.model';
+import { ScientistJsonObject, ScientistInterface, Scientist } from './scientist.model';
 
 export {
-  NavbarItem, NavbarItemInterface,
-  Scientist, ScientistInterface, ScientistResponse,
+  NavbarItemJsonObject, NavbarItemInterface, NavbarItem,
+  ScientistJsonObject, ScientistInterface, Scientist,
 };
