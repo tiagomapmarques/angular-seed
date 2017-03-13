@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
-import { Scientist, ScientistResponse } from '../../models';
+import { Scientist, ScientistJsonObject } from '../../models';
 
 const SCIENTISTS_URL = '/assets/scientists.json';
 
@@ -16,7 +16,7 @@ export class ScientistsService {
     this.scientists = [];
     this.scientistsObservable = new BehaviorSubject<Scientist[]>(this.scientists);
     this.http.get(SCIENTISTS_URL)
-      .map(response => <ScientistResponse[]> response.json().scientists)
+      .map(response => <ScientistJsonObject[]> response.json().scientists)
       .subscribe(scientists => scientists.forEach(scientist => {
         const newScientist = new Scientist(scientist);
         if (!this.latestId || newScientist.id > this.latestId) {

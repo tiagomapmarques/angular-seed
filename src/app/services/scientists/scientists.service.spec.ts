@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { TestComponent, createModule, createComponent, destroyComponent } from '../../../testing';
 import { ScientistsService } from './scientists.service';
-import { Scientist, ScientistResponse } from '../../models';
+import { Scientist, ScientistJsonObject } from '../../models';
 import { TitleType } from '../../types';
 
 describe('ScientistsService', () => {
@@ -13,8 +13,8 @@ describe('ScientistsService', () => {
   let mockHttpGet: jasmine.Spy;
   let component: TestComponent<SimpleComponent>;
 
-  const scientistJson: ScientistResponse = {
-    id: '41',
+  const scientistJson: ScientistJsonObject = {
+    id: 41,
     name: 'An Gular',
     title: 'miss',
   };
