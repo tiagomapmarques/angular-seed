@@ -11,7 +11,11 @@ export class BaseModel<T> {
       jsonProperties.forEach((property) => {
         const propertyToModel = `${property}ToModel`;
         const value = json[property];
-        this[property] = this[propertyToModel] ? this[propertyToModel](value) : value;
+        if (this[propertyToModel]) {
+          this[propertyToModel](value);
+        } else {
+          this[property] = value;
+        }
       });
     }
   }
@@ -23,7 +27,7 @@ export class BaseModel<T> {
       jsonProperties.forEach((property) => {
         const propertyToJson = `${property}ToJson`;
         const value = this[property];
-        json[property] = this[propertyToJson] ? this[propertyToJson](value) : value;
+        Object.assign(json, this[propertyToJson] ? this[propertyToJson](value) : { [property]: value });
       });
     }
   }

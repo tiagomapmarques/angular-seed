@@ -12,11 +12,11 @@ export class NavbarItem extends BaseModel<NavbarItemInterface> implements Navbar
   public link: string;
   public icon: IconType;
 
-  public iconToModel(icon: IconType|string): IconType {
-    return typeof icon === 'string' ? ICON.toModel(icon) : icon;
+  public iconToModel(icon: IconType|string): void {
+    this.icon = typeof icon === 'string' ? ICON.toModel(icon) : icon;
   }
 
-  public iconToJson(icon: IconType): string {
-    return ICON.toJson(icon);
+  public iconToJson(icon: IconType): Object {
+    return { icon: ICON.toJson(icon) };
   }
 }

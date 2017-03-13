@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
-import { Scientist, ScientistInterface } from '../../models';
+import { Scientist, ScientistResponse } from '../../models';
 
 const SCIENTISTS_URL = '/assets/scientists.json';
 
 @Injectable()
 export class ScientistsService {
-  private nextId = 0;
+  private latestId = 0;
   private scientists: Scientist[];
   private scientistsObservable: BehaviorSubject<Scientist[]>;
 
@@ -16,11 +16,11 @@ export class ScientistsService {
     this.scientists = [];
     this.scientistsObservable = new BehaviorSubject<Scientist[]>(this.scientists);
     this.http.get(SCIENTISTS_URL)
-      .map(response => <ScientistInterface[]> response.json().scientists)
+      .map(response => <ScientistResponse[]> response.json().scientists)
       .subscribe(scientists => scientists.forEach(scientist => {
         const newScientist = new Scientist(scientist);
-        if (!this.nextId || newScientist.id >= this.nextId) {
-          this.nextId = newScientist.id + 1;
+        if (!this.latestId || newScientist.id > this.latestId) {
+          this.latestId = newScientist.id;
         }
         this.scientists.push(newScientist);
       }));
@@ -34,7 +34,7 @@ export class ScientistsService {
     // NOTE: this is a mock function; a real one would use a server to add
     //       the object and then update the list
     if (!scientist.id) {
-      scientist.id = this.nextId++;
+      scientist.id = ++this.latestId;
     }
     this.scientists.push(scientist);
     this.scientistsObservable.next(this.scientists);
