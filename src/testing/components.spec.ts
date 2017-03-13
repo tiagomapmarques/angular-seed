@@ -3,6 +3,9 @@ import { TestBed, TestModuleMetadata, ComponentFixture } from '@angular/core/tes
 export interface TestComponent<T> {
   fixture: ComponentFixture<T>;
   instance: T;
+  /* tslint:disable:no-any */
+  nativeElement: any;
+  /* tslint:enable:no-any */
 };
 
 export const createModule = (moduleData: TestModuleMetadata) =>
@@ -15,6 +18,7 @@ export const createComponent = <T>(component: any): TestComponent<T> => {
   return {
     fixture: fixture,
     instance: fixture.debugElement.componentInstance,
+    nativeElement: fixture.debugElement.nativeElement,
   };
 };
 
@@ -23,5 +27,6 @@ export const destroyComponent = <T>(component: TestComponent<T>) => {
     component.fixture.destroy();
     component.fixture = undefined;
     component.instance = undefined;
+    component.nativeElement = undefined;
   }
 };
