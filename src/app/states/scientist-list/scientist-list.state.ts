@@ -16,7 +16,7 @@ export class ScientistListState {
     this.subscription = this.scientistsService.getAll().subscribe(scientists => this.next(scientists));
   }
 
-  public next(scientists: Scientist[]): void {
+  private next(scientists: Scientist[]): void {
     this.store.next(scientists);
   }
 

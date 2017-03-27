@@ -14,10 +14,44 @@ export interface NavbarItemInterface {
 }
 
 export class NavbarItem extends BaseModel<NavbarItemJsonObject|NavbarItemInterface> {
-  public id: number;
-  public title: string;
-  public link: string;
-  public icon: IconType;
+  /* tslint:disable:variable-name */
+  private _id: number;
+  private _title: string;
+  private _link: string;
+  private _icon: IconType;
+  /* tslint:enable:variable-name */
+
+  public get id(): number {
+    return this._id;
+  }
+  public set id(value: number) {
+    this._id = value;
+    this.__BaseModel__property_modified('id', value);
+  }
+
+  public get title(): string {
+    return this._title;
+  }
+  public set title(value: string) {
+    this._title = value;
+    this.__BaseModel__property_modified('title', value);
+  }
+
+  public get link(): string {
+    return this._link;
+  }
+  public set link(value: string) {
+    this._link = value;
+    this.__BaseModel__property_modified('link', value);
+  }
+
+  public get icon(): IconType {
+    return this._icon;
+  }
+  public set icon(value: IconType) {
+    this._icon = value;
+    this.__BaseModel__property_modified('icon', value);
+  }
 
   public iconToModel(icon: IconType|string): void {
     this.icon = typeof icon === 'string' ? ICON.toModel(icon) : icon;
