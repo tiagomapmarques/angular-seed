@@ -18,14 +18,14 @@ export interface BaseModelTestDefinition<T> {
 export const baseModelTests = <T>(definition: BaseModelTestDefinition<T>) => {
 
   describe('roundtrip', () => {
-    definition.objects.forEach((object, index) => {
+    definition.objects.forEach((object) => {
 
       it(`is possible for ${JSON.stringify(object.input)}`, () => {
-        const model = < BaseModel<T> > new definition.model(object.input);
+        const modelled = < BaseModel<T> > new definition.model(object.input);
         if (object.modelled) {
-          expect(model).toEqual(object.modelled);
+          expect(modelled).toEqual(object.modelled);
         }
-        const newObject = model.toJson();
+        const newObject = modelled.toJson();
         expect(object.output).toEqual(newObject);
       });
     });

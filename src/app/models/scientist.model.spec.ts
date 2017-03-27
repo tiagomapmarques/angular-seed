@@ -1,21 +1,35 @@
 import { baseModelTests } from './base.model.spec';
+import { Json } from './base.model';
 import { Scientist, ScientistJsonObject, ScientistInterface } from './scientist.model';
-import { TitleType } from '../types';
+import { TitleType, TITLE } from '../types';
 
 describe('Scientist', () => {
+  const jsonObject: ScientistJsonObject = {
+    id: 1,
+    name: 'T',
+    title: 'mister',
+  };
+  const interfaceObject: ScientistInterface = {
+    name: 'T',
+    title: TitleType.MISTER,
+  };
+  const interfaceObjectResult: Json = {
+    name: 'T',
+    title: TITLE.toJson(TitleType.MISTER),
+  };
 
   baseModelTests<ScientistJsonObject|ScientistInterface>({
     model: Scientist,
     objects: [
       {
-        input: { id: 1, name: 'T', title: 'mister' },
-        modelled: new Scientist({ id: 1, name: 'T', title: 'mister' }),
-        output: { id: 1, name: 'T', title: 'mister' },
+        input: jsonObject,
+        modelled: new Scientist(jsonObject),
+        output: jsonObject,
       },
       {
-        input: { name: 'T', title: TitleType.MISTER },
-        modelled: new Scientist({ name: 'T', title: TitleType.MISTER }),
-        output: { name: 'T', title: 'mister' },
+        input: interfaceObject,
+        modelled: new Scientist(interfaceObject),
+        output: interfaceObjectResult,
       },
     ],
   });

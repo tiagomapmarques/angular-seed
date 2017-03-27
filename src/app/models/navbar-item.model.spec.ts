@@ -1,21 +1,38 @@
 import { baseModelTests } from './base.model.spec';
+import { Json } from './base.model';
 import { NavbarItem, NavbarItemJsonObject, NavbarItemInterface } from './navbar-item.model';
-import { IconType } from '../types';
+import { IconType, ICON } from '../types';
 
 describe('NavbarItem', () => {
+  const jsonObject: NavbarItemJsonObject = {
+    id: 1,
+    title: 'Home',
+    link: '/home',
+    icon: 'home',
+  };
+  const interfaceObject: NavbarItemInterface = {
+    title: 'Home',
+    link: '/home',
+    icon: IconType.HOME,
+  };
+  const interfaceObjectResult: Json = {
+    title: 'Home',
+    link: '/home',
+    icon: ICON.toJson(IconType.HOME),
+  };
 
   baseModelTests<NavbarItemJsonObject|NavbarItemInterface>({
     model: NavbarItem,
     objects: [
       {
-        input: { id: 1, title: 'Home', link: '/home', icon: 'home' },
-        modelled: new NavbarItem({ id: 1, title: 'Home', link: '/home', icon: 'home' }),
-        output: { id: 1, title: 'Home', link: '/home', icon: 'home' },
+        input: jsonObject,
+        modelled: new NavbarItem(jsonObject),
+        output: jsonObject,
       },
       {
-        input: { title: 'Home', link: '/home', icon: IconType.HOME },
-        modelled: new NavbarItem({ title: 'Home', link: '/home', icon: IconType.HOME }),
-        output: { title: 'Home', link: '/home', icon: 'home' },
+        input: interfaceObject,
+        modelled: new NavbarItem(interfaceObject),
+        output: interfaceObjectResult,
       },
     ],
   });
