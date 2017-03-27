@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
 
 import { Scientist, ScientistInterface } from '../../models';
-import { TitleType, TITLE } from '../../types';
+import { TitleType, TITLE, NumberType } from '../../types';
 import { ScientistListState } from '../../states/scientist-list';
 
 @Component({
@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public handleListItemClick(id: number): void {
-    this.scientistListState.remove(id);
+  public handleListItemClick(idString: string): void {
+    this.scientistListState.remove(parseInt(idString, NumberType.DEC));
   }
 }
