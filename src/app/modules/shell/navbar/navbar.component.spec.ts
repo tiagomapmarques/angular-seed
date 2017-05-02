@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Pipe } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
-import { MdToolbarModule, MdTabsModule, MdIconModule } from '@angular/material';
+import { MdTabsModule, MdIconModule } from '@angular/material';
 
 import { TestComponent, createModule, createComponent, destroyComponent, TransparentPipe } from '../../../../testing';
 
@@ -11,6 +11,7 @@ import { IconType } from '../../../types';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
+  const TABS_LENGTH = 2;
   let component: TestComponent<SimpleComponent>;
   let mockRouter: Object;
   let mockActivatedRouter: Object;
@@ -67,7 +68,7 @@ describe('NavbarComponent', () => {
     });
 
     it('are displayed', () => {
-      expect(tabs.length).toBe(2);
+      expect(tabs.length).toBe(TABS_LENGTH);
     });
 
     it('have the correct icons', () => {
