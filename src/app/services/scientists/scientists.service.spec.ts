@@ -45,15 +45,20 @@ describe('ScientistsService', () => {
     destroyComponent(component);
   });
 
-  it('initialises', () => {
-    component = createComponent<SimpleComponent>(SimpleComponent);
-    expect(component.instance.scientistsService).toBeTruthy();
-  });
+  describe('the service', () => {
 
-  it('calls the http get method correctly', () => {
-    component = createComponent<SimpleComponent>(SimpleComponent);
-    expect(mockHttpGet.calls.count()).toEqual(1);
-    expect(mockHttpGet.calls.argsFor(0)).toEqual([ SCIENTISTS_URL ]);
+    beforeEach(() => {
+      component = createComponent<SimpleComponent>(SimpleComponent);
+    });
+
+    it('initialises', () => {
+      expect(component.instance.scientistsService).toBeTruthy();
+    });
+
+    it('calls the http get method correctly', () => {
+      expect(mockHttpGet.calls.count()).toEqual(1);
+      expect(mockHttpGet.calls.argsFor(0)).toEqual([ SCIENTISTS_URL ]);
+    });
   });
 
   describe('#getAll', () => {
