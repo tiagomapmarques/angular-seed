@@ -1,7 +1,7 @@
-import { TestComponent, createModule, createComponent, destroyComponent } from './components.spec';
-import { TransparentPipe } from './pipes.spec';
+import { TestComponent, createModule, createComponent, destroyComponent } from './components';
+import { TransparentPipe, TestPipe } from './pipes';
 
 export {
   TestComponent, createModule, createComponent, destroyComponent,
-  TransparentPipe,
+  TransparentPipe, TestPipe,
 };

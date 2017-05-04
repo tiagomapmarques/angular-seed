@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { MdTabsModule, MdIconModule } from '@angular/material';
 
-import { TestComponent, createModule, createComponent, destroyComponent, TransparentPipe } from '../../../../testing';
+import { TestComponent, createModule, createComponent, destroyComponent, TestPipe } from '../../../../testing';
 
 import { IconType } from '../../../types';
 import { NavbarComponent } from './navbar.component';
@@ -20,7 +20,11 @@ describe('NavbarComponent', () => {
     mockRouter = {
       events: jasmine.createSpyObj('RouterEvents', [ 'subscribe' ]),
       url: jasmine.createSpy('RouterUrl'),
+      createUrlTree: jasmine.createSpy('RouterUrlTree'),
+      navigateByUrl: jasmine.createSpy('RouterNavigate'),
     };
+    (<jasmine.Spy>((<Router> mockRouter).createUrlTree)).and
+      .callFake((route: string[], tree: Object) => ({ newMockedUrl: route[0] }));
     mockActivatedRouter = jasmine.createSpy('ActivatedRoute');
   });
 
@@ -58,6 +62,22 @@ describe('NavbarComponent', () => {
   });
 
   describe('the tabs', () => {
+    const testNavigation = (index: number, route: string) => {
+      describe(`when the ${index}th tab is clicked`, () => {
+        beforeEach(() => {
+          component.nativeElement.querySelectorAll('.link')[index].click();
+        });
+
+        it('is bound to the \'routerLink\' property', () => {
+          expect((<Router> mockRouter).createUrlTree).toHaveBeenCalled();
+        });
+
+        it(`changes the route to \'${route}\'`, () => {
+          expect((<Router> mockRouter).navigateByUrl)
+            .toHaveBeenCalledWith({ newMockedUrl: route }, { skipLocationChange: false, replaceUrl: false });
+        });
+      });
+    };
     let tabs: HTMLElement[][];
 
     beforeEach(() => {
@@ -72,8 +92,8 @@ describe('NavbarComponent', () => {
     });
 
     it('have the correct icons', () => {
-      expect(tabs[0][0].innerHTML).toBe(`${IconType.HOME}`);
-      expect(tabs[1][0].innerHTML).toBe(`${IconType.INFO}`);
+      expect(tabs[0][0].innerHTML).toBe(`${TestPipe.transform(IconType.HOME)}`);
+      expect(tabs[1][0].innerHTML).toBe(`${TestPipe.transform(IconType.INFO)}`);
     });
 
     describe('the titles', () => {
@@ -89,12 +109,15 @@ describe('NavbarComponent', () => {
         });
       });
     });
+
+    testNavigation(0, '/');
+    testNavigation(1, '/about');
   });
 });
 
 /* tslint:disable:use-pipe-transform-interface */
 @Pipe({ name: 'icon' })
-class MockIconPipe extends TransparentPipe { }
+class MockIconPipe extends TestPipe { }
 /* tslint:enable:use-pipe-transform-interface */
 
 @Component({ template: '<app-shell-navbar></app-shell-navbar>' })
