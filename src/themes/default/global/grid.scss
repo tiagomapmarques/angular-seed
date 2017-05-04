@@ -2,7 +2,9 @@
 
 $grid-columns: 12;
 @mixin grid-col($cols, $max-cols: $grid-columns) {
-  width: $cols*100%/$max-cols;
+  @if($cols > 0) {
+    width: $cols*100%/$max-cols;
+  }
 }
 
 @for $i from 1 through $grid-columns {
@@ -13,7 +15,7 @@ $grid-columns: 12;
 
 @mixin grid-format($desktop, $tablet, $mobile) {
   @if(type-of($desktop) == number) {
-    @extend %grid-col-#{$desktop};
+    @include grid-col($desktop);
   }
 
   @if(type-of($tablet) == number) {

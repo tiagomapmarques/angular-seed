@@ -2,7 +2,7 @@
 @import '~@angular/material/toolbar/toolbar';
 
 .app-container {
-  @include grid-format(6, 10, 12);
+  @include grid-format(10, 10, 12);
 
   display: block;
   padding: $mat-toolbar-padding;

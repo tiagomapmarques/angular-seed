@@ -1,7 +1,6 @@
 @import './app-container';
 
 @mixin app-about {
-
   :host {
     @extend .app-container;
   }

@@ -9,6 +9,5 @@ import { HomeComponent } from './home.component';
 @NgModule({
   imports: [ CommonModule, FormsModule, MdInputModule, MdButtonModule, MdRadioModule ],
   declarations: [ HomeComponent, TitlePipe ],
-  exports: [ HomeComponent ],
 })
 export class HomeModule { }
